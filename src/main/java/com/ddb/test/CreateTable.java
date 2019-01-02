@@ -18,6 +18,13 @@ import software.amazon.awssdk.services.dynamodb.model.ScalarAttributeType;
 
 public class CreateTable {
 	
+	private DynamoDbClient ddb;
+	
+	public CreateTable(DynamoDbClient ddb) {
+		this.ddb = ddb;
+	}
+	
+	
 	public void createTable() {
 		
 		CreateTableRequest request = CreateTableRequest.builder()
@@ -70,17 +77,14 @@ public class CreateTable {
 				.build();
 
 		try {
-			DynamoDbClient ddb = DynamoDbClient.builder().endpointOverride(new URI("http://localhost:8000")).build();
+			//DynamoDbClient ddb = DynamoDbClient.builder().endpointOverride(new URI("http://localhost:8000")).build();
 		    CreateTableResponse response = ddb.createTable(request);
 		    System.out.println(response.tableDescription().tableName());
 		} catch (DynamoDbException e) {
 		    System.err.println(e.getMessage());
 		    System.exit(1);
-		} catch (URISyntaxException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		System.out.println("Done!");
+		} 
+		
 	}
 
 }

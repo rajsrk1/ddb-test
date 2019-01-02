@@ -1,0 +1,7 @@
+com\ddb\test\GetItem.class
+com\ddb\test\PutItem.class
+com\ddb\test\CreateTable.class
+com\ddb\dao\ActivityItem.class
+com\ddb\test\DescribeTable.class
+com\ddb\test\DDBUtil.class
+com\ddb\dao\TwtrSearchItem.class
