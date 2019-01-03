@@ -19,7 +19,8 @@ public class TwtrSearchItem {
 	private String reqUsr;
 	private String searchType;
 	private boolean isAvailable;
-	private String lastStatus;
+	private String lastStatus1;
+	private String lastStatus2;
 	private Date lastActyTS;
 	private String lastDesc;
 	private String lastPrcsName;
@@ -65,17 +66,22 @@ public class TwtrSearchItem {
 	}
 	public void setAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
+	}	
+	
+	public String getLastStatus1() {
+		return lastStatus1;
+	}
+	public void setLastStatus1(String lastStatus1) {
+		this.lastStatus1 = lastStatus1;
 	}
 	
-	@DynamoDBIndexHashKey(globalSecondaryIndexName="TwtrSearch_Activity_GSI")
-	public String getLastStatus() {
-		return lastStatus;
+	public String getLastStatus2() {
+		return lastStatus2;
 	}
-	public void setLastStatus(String lastStatus) {
-		this.lastStatus = lastStatus;
+	public void setLastStatus2(String lastStatus2) {
+		this.lastStatus2 = lastStatus2;
 	}
 	
-	@DynamoDBIndexRangeKey(globalSecondaryIndexName="TwtrSearch_Activity_GSI")
 	public Date getLastActyTS() {
 		return lastActyTS;
 	}
@@ -100,17 +106,13 @@ public class TwtrSearchItem {
 	public void setActivity(List<ActivityItem> activity) {
 		this.activity = activity;
 	}
+	
 	@Override
 	public String toString() {
 		return "TwtrSearchItem [searchId=" + searchId + ", reqTS=" + reqTS + ", searchKey=" + searchKey + ", reqUsr="
-				+ reqUsr + ", searchType=" + searchType + ", isAvailable=" + isAvailable + ", lastStatus=" + lastStatus
-				+ ", lastActyTS=" + lastActyTS + ", lastDesc=" + lastDesc + ", lastPrcsName=" + lastPrcsName
-				+ ", activity=" + activity + "]";
+				+ reqUsr + ", searchType=" + searchType + ", isAvailable=" + isAvailable + ", lastStatus1="
+				+ lastStatus1 + ", lastStatus2=" + lastStatus2 + ", lastActyTS=" + lastActyTS + ", lastDesc=" + lastDesc
+				+ ", lastPrcsName=" + lastPrcsName + ", activity=" + activity + "]";
 	}
-	
-	
-	
-	
-	
 	
 }

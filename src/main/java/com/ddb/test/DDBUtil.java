@@ -33,7 +33,7 @@ public class DDBUtil {
 		try {
 			DynamoDbClient newClient = DynamoDbClient.builder().endpointOverride(new URI("http://localhost:8000")).build();
 			AmazonDynamoDB oldClient = AmazonDynamoDBClientBuilder.standard().withEndpointConfiguration(
-					new AwsClientBuilder.EndpointConfiguration("http://localhost:8000", "us-west-2")).build();
+					new AwsClientBuilder.EndpointConfiguration("http://localhost:8000", "ap-south-1")).build();
 			
 			
 			
@@ -43,6 +43,12 @@ public class DDBUtil {
 				new PutItem(oldClient).putItem();
 			}else if(args[0].equals("get")) {
 				new GetItem(oldClient).getItem();
+			}else if(args[0].equals("qidx")) {
+				new QueryIndex(oldClient).queryIndex();
+			}else if(args[0].equals("dltb")) {
+				new DeleteTable(newClient).deleteTable();
+			}else if(args[0].equals("crtb")) {
+				new CreateTable(newClient).createTable();
 			}
 			
 			

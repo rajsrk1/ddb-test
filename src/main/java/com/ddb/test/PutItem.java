@@ -25,25 +25,27 @@ public class PutItem {
 		
 		TwtrSearchItem item = new TwtrSearchItem();
 		item.setReqTS(new Date());
-		item.setSearchKey("key1");
-		item.setReqUsr("user1");
+		item.setSearchKey("key3");
+		item.setReqUsr("user3");
 		item.setSearchType("htg");
 		item.setAvailable(false);
-		item.setLastStatus("Initiated#Pending-Processing");
+		item.setLastStatus1("Data-Collection");
+		item.setLastStatus2("Failed");
 		item.setLastActyTS(new Date());
-		item.setLastDesc("Search initiated");
+		item.setLastDesc("API Timed Out");
 		item.setLastPrcsName("Driver");
 		
 		ActivityItem actyItem = new ActivityItem();
-		actyItem.setStatus("Initiated#Pending-Processing");
+		actyItem.setStatus1("Data-Collection");
+		actyItem.setStatus2("Failed");
 		actyItem.setActyTS(new Date());
-		actyItem.setDesc("Search initiated");
+		actyItem.setDesc("API Timed Out");
 		actyItem.setPrcsName("Driver");
 		
 		List<ActivityItem> actyList = new ArrayList<ActivityItem>();
 		actyList.add(actyItem);
 		
-		//item.setActivity(actyList);
+		item.setActivity(actyList);
 		
 		mapper.save(item);
 		

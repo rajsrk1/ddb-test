@@ -1,8 +1,5 @@
 package com.ddb.test;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-
 import software.amazon.awssdk.services.dynamodb.DynamoDbClient;
 import software.amazon.awssdk.services.dynamodb.model.AttributeDefinition;
 import software.amazon.awssdk.services.dynamodb.model.CreateTableRequest;
@@ -37,13 +34,13 @@ public class CreateTable {
 						.attributeType(ScalarAttributeType.S)
 						.build(),
 						AttributeDefinition.builder()
-						.attributeName("lastStatus")
+						.attributeName("lastStatus1")
 						.attributeType(ScalarAttributeType.S)
 						.build(),
 						AttributeDefinition.builder()
-						.attributeName("lastActyTS")
+						.attributeName("lastStatus2")
 						.attributeType(ScalarAttributeType.S)
-						.build())
+						.build())						
 				.keySchema(KeySchemaElement.builder()
 						.attributeName("searchId")
 						.keyType(KeyType.HASH)
@@ -55,13 +52,13 @@ public class CreateTable {
 				.globalSecondaryIndexes(GlobalSecondaryIndex.builder()
 						.indexName("TwtrSearch_Activity_GSI")
 						.keySchema(KeySchemaElement.builder()
-								.attributeName("lastStatus")
+								.attributeName("lastStatus1")
 								.keyType(KeyType.HASH).build(),
 								KeySchemaElement.builder()
-								.attributeName("lastActyTS")
+								.attributeName("lastStatus2")
 								.keyType(KeyType.RANGE).build())
 						.projection(Projection.builder()
-								.nonKeyAttributes("searchId","searchKey","reqTS")
+								.nonKeyAttributes("lastActyTS","searchId","searchKey","reqTS")
 								.projectionType(ProjectionType.INCLUDE)								
 								.build())
 						.provisionedThroughput(ProvisionedThroughput.builder()
@@ -80,6 +77,10 @@ public class CreateTable {
 			//DynamoDbClient ddb = DynamoDbClient.builder().endpointOverride(new URI("http://localhost:8000")).build();
 		    CreateTableResponse response = ddb.createTable(request);
 		    System.out.println(response.tableDescription().tableName());
+		    
+		    System.out.println("Listing tables after create");
+		    System.out.println (ddb.listTables().toString());
+		    
 		} catch (DynamoDbException e) {
 		    System.err.println(e.getMessage());
 		    System.exit(1);
