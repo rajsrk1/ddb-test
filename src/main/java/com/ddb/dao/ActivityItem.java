@@ -4,6 +4,17 @@ import java.util.Date;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBDocument;
 
+/*
+ * How did the discussion start and how it progressed, how many people participated
+What did popular personalities say
+Who are the opinion makers and what are their opinions
+What other topics were spoken about, what are the related events in the past
+From which parts of the world did people speak
+What languages did people speak
+What platforms did people use (web, mobile etc)
+What were the media items popularly shared (images, videos, URLs)
+ */
+
 @DynamoDBDocument
 public class ActivityItem {
 	
